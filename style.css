@@ -1,0 +1,125 @@
+/* Fuente y base */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background: #f5f5f5;
+}
+
+/* Header */
+header {
+  background: #007bff;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.8em;
+}
+.search-bar input {
+  padding: 8px;
+  border-radius: 4px;
+  border: none;
+  width: 220px;
+}
+
+/* Filtros */
+.filters {
+  background: white;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.filters select, .filters input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.filters button {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Secciones */
+.section-title {
+  text-align: center;
+  margin: 30px 0 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+/* Grid de becas */
+.becas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 0 20px 40px;
+}
+
+/* Tarjetas */
+.beca-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.beca-card h3 {
+  margin: 0 0 10px;
+  color: #007bff;
+}
+
+/* Etiquetas (tags) */
+.tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.tag {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  color: white;
+}
+.tag.internacional { background: #17a2b8; }
+.tag.nacional { background: #6c757d; }
+.tag.maestria { background: #28a745; }
+.tag.doctorado { background: #6f42c1; }
+.tag.verano { background: #fd7e14; }
+.tag.posgrado { background: #dc3545; }
+.tag.curso { background: #20c997; }
+.tag.fellowship { background: #6610f2; }
+.tag.competencia { background: #ffc107; }
+
+/* Botón aplicar */
+.beca-card button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  background: #eee;
+  padding: 20px;
+  text-align: center;
+}
+footer img {
+  height: 30px;
+  margin: 0 10px;
+  vertical-align: middle;
+}

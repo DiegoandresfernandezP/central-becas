@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Central de Becas - Oportunidades Internacionales</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header con título y buscador -->
+  <header>
+    <h1>Oportunidades Internacionales</h1>
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar... 🔍">
+    </div>
+  </header>
+
+  <!-- Barra de filtros -->
+  <div class="filters">
+    <select id="tipoFilter">
+      <option value="">Tipo</option>
+      <option value="pregrado">Pregrado</option>
+      <option value="maestria">Maestría</option>
+      <option value="doctorado">Doctorado</option>
+      <option value="posdoc">Posdoctorado</option>
+      <option value="internship">Internship</option>
+      <option value="verano">Verano</option>
+      <option value="curso">Curso Corto</option>
+      <option value="fellowship">Fellowship</option>
+      <option value="competencia">Competencia</option>
+    </select>
+    <select id="areaFilter">
+      <option value="">Área</option>
+      <option value="STEM">STEM</option>
+      <option value="sociales">Ciencias Sociales</option>
+      <option value="salud">Salud</option>
+      <option value="artes">Artes</option>
+      <option value="humanidades">Humanidades</option>
+      <option value="economia">Economía</option>
+    </select>
+    <select id="nivelFilter">
+      <option value="">Nivel</option>
+      <option value="nacional">Nacional</option>
+      <option value="internacional">Internacional</option>
+    </select>
+    <input type="date" id="fechaFilter">
+    <button onclick="filtrarBecas()">Filtrar</button>
+  </div>
+
+  <!-- Sección de becas destacadas -->
+  <div class="section-title">🎯 Becas Destacadas</div>
+  <div class="becas-grid" id="destacadas"></div>
+
+  <!-- Sección de todas las oportunidades -->
+  <div class="section-title">📚 Todas las Oportunidades</div>
+  <div class="becas-grid" id="becasList"></div>
+
+  <!-- Footer con fuentes confiables -->
+  <footer>
+    <p>Fuentes confiables:</p>
+    <img src="assets/logo_carolina.png" alt="Fundación Carolina">
+    <img src="assets/logo_fulbright.png" alt="Fulbright">
+    <img src="assets/logo_daad.png" alt="DAAD">
+    <img src="assets/logo_campusfrance.png" alt="Campus France">
+    <img src="assets/logo_colfuturo.png" alt="Colfuturo">
+    <img src="assets/logo_auip.png" alt="AUIP">
+    <img src="assets/logo_icetex.png" alt="ICETEX">
+  </footer>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>

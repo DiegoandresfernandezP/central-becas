@@ -1,0 +1,102 @@
+[
+  {
+    "titulo": "Fundación Carolina 2026-2027",
+    "descripcion": "736 becas de posgrado, doctorado y movilidad en todas las áreas para iberoamericanos.",
+    "area": "todas",
+    "tipo": "posgrado",
+    "nivel": "internacional",
+    "fechaCierre": "2026-03-15",
+    "enlace": "https://www.fundacioncarolina.es",
+    "cobertura": "Matrícula + manutención"
+  },
+  {
+    "titulo": "Fulbright Posgrado",
+    "descripcion": "Becas para estudios de posgrado en Estados Unidos.",
+    "area": "todas",
+    "tipo": "maestria",
+    "nivel": "internacional",
+    "fechaCierre": "2026-05-22",
+    "enlace": "https://fulbright.pe/becaposgradofulbright",
+    "cobertura": "Matrícula + estipendio"
+  },
+  {
+    "titulo": "DAAD Doctoral Scholarships",
+    "descripcion": "Becas de doctorado en Alemania para estudiantes internacionales.",
+    "area": "STEM",
+    "tipo": "doctorado",
+    "nivel": "internacional",
+    "fechaCierre": "2026-10-30",
+    "enlace": "https://www.daad.de/en/",
+    "cobertura": "Matrícula + manutención"
+  },
+  {
+    "titulo": "COLFUTURO Crédito-Beca Exterior",
+    "descripcion": "Financiamiento para posgrados en el exterior con condonación parcial.",
+    "area": "todas",
+    "tipo": "posgrado",
+    "nivel": "internacional",
+    "fechaCierre": "2026-04-30",
+    "enlace": "http://www.colfuturo.org",
+    "cobertura": "Hasta 100% con retorno de servicio"
+  },
+  {
+    "titulo": "AUIP Becas Movilidad",
+    "descripcion": "5.000€ para movilidad de investigación y posgrado en universidades iberoamericanas.",
+    "area": "todas",
+    "tipo": "doctorado",
+    "nivel": "internacional",
+    "fechaCierre": "2026-06-10",
+    "enlace": "https://www.auip.org/es/becasauip",
+    "cobertura": "5.000€ movilidad"
+  },
+  {
+    "titulo": "Intern Colombia - Internships Internacionales",
+    "descripcion": "Prácticas en 24 disciplinas (incluyendo ingeniería) con inmersión cultural.",
+    "area": "ingenieria",
+    "tipo": "internship",
+    "nivel": "nacional",
+    "fechaCierre": "2026-12-31",
+    "enlace": "https://www.interncolombia.com",
+    "cobertura": "Colocación + soporte"
+  },
+  {
+    "titulo": "Erasmus Mundus Joint Masters",
+    "descripcion": "Programas de maestría conjuntos en Europa con becas completas.",
+    "area": "STEM",
+    "tipo": "maestria",
+    "nivel": "internacional",
+    "fechaCierre": "2026-02-28",
+    "enlace": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+    "cobertura": "Matrícula + manutención"
+  },
+  {
+    "titulo": "Google Digital - Ciberseguridad",
+    "descripcion": "10.000 becas gratuitas en IA y ciberseguridad para colombianos.",
+    "area": "digital",
+    "tipo": "curso",
+    "nivel": "nacional",
+    "fechaCierre": "2026-06-30",
+    "enlace": "https://www.tiktok.com/@ministerio_tic/video/7512142043842399544",
+    "cobertura": "Gratis total"
+  },
+  {
+    "titulo": "Montreal Robotics Summer School",
+    "descripcion": "Escuela de verano en robótica para estudiantes y profesionales.",
+    "area": "ingenieria",
+    "tipo": "verano",
+    "nivel": "internacional",
+    "fechaCierre": "2026-07-15",
+    "enlace": "https://docs.google.com/forms/d/e/1FAIpQLSepqDobf7JcMqAgRAq7c-RXjDfga1YOZ29hxiC_mTLBQ1mZqA/viewform",
+    "cobertura": "Parcial"
+  },
+  {
+    "titulo": "Humboldt Research Fellowship",
+    "descripcion": "Fellowship para investigadores experimentados en Alemania.",
+    "area": "STEM",
+    "tipo": "fellowship",
+    "nivel": "internacional",
+    "fechaCierre": "2026-07-31",
+    "enlace": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship",
+    "cobertura": "Estipendio mensual + gastos de investigación"
+  }
+]
