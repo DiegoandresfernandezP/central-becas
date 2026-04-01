@@ -49,3 +49,17 @@ fetch("becas.json")
 
 // Activar buscador en tiempo real
 document.getElementById("searchInput").addEventListener("input", filtrarBecas);
+// Buscador dinámico
+document.getElementById("searchInput").addEventListener("input", function () {
+    const query = this.value.toLowerCase();
+    const cards = document.querySelectorAll(".beca-card");
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+            card.style.display = "block";  // mostrar si coincide
+        } else {
+            card.style.display = "none";   // ocultar si no coincide
+        }
+    });
+});
