@@ -6,8 +6,6 @@
   <link href="style.css" rel="stylesheet">
 </head>
 <body>
- 
-
   <!-- Header con título y buscador -->
   <header>
     <h1>Oportunidades Internacionales</h1>
@@ -15,57 +13,68 @@
       <input type="text" id="searchInput" placeholder="Buscar becas... 🔍">
     </div>
   </header>
- <!-- Sección de favoritos -->
+
+  <!-- Sección de favoritos -->
   <h2>⭐ Mis Favoritos</h2>
-<div class="favoritos-filtros">
-  <select id="favoritosUrgencia">
-    <option value="">-- Filtrar por urgencia --</option>
-    <option value="7">Menos de 7 días</option>
-    <option value="30">Menos de 30 días</option>
-  </select>
+  <div class="favoritos-filtros">
+    <select id="favoritosUrgencia">
+      <option value="">-- Filtrar por urgencia --</option>
+      <option value="7">Menos de 7 días</option>
+      <option value="30">Menos de 30 días</option>
+    </select>
 
-  <select id="favoritosTipo">
-    <option value="">-- Filtrar por tipo --</option>
-    <option value="internacional">Internacional</option>
-    <option value="nacional">Nacional</option>
-  </select>
+    <select id="favoritosTipo">
+      <option value="">-- Filtrar por tipo --</option>
+      <option value="Internship">Internship</option>
+      <option value="Posgrado">Posgrado</option>
+      <option value="Maestría">Maestría</option>
+      <option value="Competencia">Competencia</option>
+      <option value="Posdoc">Posdoc</option>
+    </select>
 
-  <button onclick="filtrarFavoritos()">Filtrar Favoritos</button>
-</div>
-<div class="becas-grid" id="favoritosList"></div>
-<button onclick="mostrarFavoritos()">Ver Favoritos</button>
+    <button onclick="filtrarFavoritos()">Filtrar Favoritos</button>
+  </div>
+  <div class="becas-grid" id="favoritosList"></div>
+  <button onclick="mostrarFavoritos()">Ver Favoritos</button>
+
   <!-- Barra de filtros -->
   <div class="filters">
-    <select id="tipoFilter">
+    <select id="tipoFilter" onchange="filtrarBecas()">
       <option value="">Tipo</option>
-      <option value="pregrado">Pregrado</option>
-      <option value="maestria">Maestría</option>
-      <option value="doctorado">Doctorado</option>
-      <option value="posdoc">Posdoctorado</option>
-      <option value="internship">Internship</option>
-      <option value="verano">Verano</option>
-      <option value="curso">Curso Corto</option>
-      <option value="fellowship">Fellowship</option>
-      <option value="competencia">Competencia</option>
+      <option value="Internship">Internship</option>
+      <option value="Posgrado">Posgrado</option>
+      <option value="Maestría">Maestría</option>
+      <option value="Competencia">Competencia</option>
+      <option value="Posdoc">Posdoc</option>
     </select>
 
-    <select id="areaFilter">
+    <select id="areaFilter" onchange="filtrarBecas()">
       <option value="">Área</option>
       <option value="STEM">STEM</option>
-      <option value="sociales">Ciencias Sociales</option>
-      <option value="salud">Salud</option>
-      <option value="artes">Artes</option>
-      <option value="humanidades">Humanidades</option>
-      <option value="economia">Economía</option>
+      <option value="IT">IT</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Todas">Todas</option>
     </select>
 
-    <select id="nivelFilter">
-      <option value="">Nivel</option>
-      <option value="nacional">Nacional</option>
-      <option value="internacional">Internacional</option>
+    <select id="faseFilter" onchange="filtrarBecas()">
+      <option value="">Fase</option>
+      <option value="Pendiente de solicitar">Pendiente de solicitar</option>
     </select>
 
-    <select id="ordenFilter">
+    <select id="paisFilter" onchange="filtrarBecas()">
+      <option value="">País</option>
+      <option value="Argentina">Argentina</option>
+      <option value="Estados Unidos">Estados Unidos</option>
+      <option value="Israel">Israel</option>
+      <option value="Japón">Japón</option>
+      <option value="Arabia Saudita">Arabia Saudita</option>
+      <option value="Alemania">Alemania</option>
+      <option value="Francia">Francia</option>
+      <option value="Europa">Europa</option>
+      <option value="Remoto">Remoto</option>
+    </select>
+
+    <select id="ordenFilter" onchange="filtrarBecas()">
       <option value="">Ordenar por...</option>
       <option value="asc">Fecha más próxima</option>
       <option value="desc">Fecha más lejana</option>
@@ -85,22 +94,22 @@
 
   <!-- Footer con fuentes confiables -->
   <footer>
-  <p>Fuentes confiables:</p>
-  <img src="assets/logo_carolina.png" alt="Fundación Carolina">
-  <img src="assets/logo_fulbright.png" alt="Fulbright">
-  <img src="assets/logo_daad.png" alt="DAAD">
-  <img src="assets/logo_campusfrance.png" alt="Campus France">
-  <img src="assets/logo_colfuturo.png" alt="Colfuturo">
-  <img src="assets/logo_auip.png" alt="AUIP">
-  <img src="assets/logo_icetex.png" alt="ICETEX">
-  <img src="assets/logo_chevening.png" alt="Chevening">
-  <img src="assets/logo_erasmus.png" alt="Erasmus+">
-  <img src="assets/logo_santander.png" alt="Banco Santander">
-  <img src="assets/logo_oea.png" alt="OEA">
-  <img src="assets/logo_unesco.png" alt="UNESCO">
-  <img src="assets/logo_worldbank.png" alt="World Bank">
-  <img src="assets/logo_rotary.png" alt="Rotary International">
-</footer>
+    <p>Fuentes confiables:</p>
+    <img src="assets/logo_carolina.png" alt="Fundación Carolina">
+    <img src="assets/logo_fulbright.png" alt="Fulbright">
+    <img src="assets/logo_daad.png" alt="DAAD">
+    <img src="assets/logo_campusfrance.png" alt="Campus France">
+    <img src="assets/logo_colfuturo.png" alt="Colfuturo">
+    <img src="assets/logo_auip.png" alt="AUIP">
+    <img src="assets/logo_icetex.png" alt="ICETEX">
+    <img src="assets/logo_chevening.png" alt="Chevening">
+    <img src="assets/logo_erasmus.png" alt="Erasmus+">
+    <img src="assets/logo_santander.png" alt="Banco Santander">
+    <img src="assets/logo_oea.png" alt="OEA">
+    <img src="assets/logo_unesco.png" alt="UNESCO">
+    <img src="assets/logo_worldbank.png" alt="World Bank">
+    <img src="assets/logo_rotary.png" alt="Rotary International">
+  </footer>
 
   <!-- Script principal -->
   <script src="script.js"></script>
