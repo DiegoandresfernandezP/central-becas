@@ -99,7 +99,7 @@ function mostrarFavoritos() {
   lista.innerHTML = "";
 
   // 🔧 Ordenar por fecha de cierre (más próxima primero)
-  favoritos.sort((a, b) => new Date(a.fechaCierre) - new Date(b.fechaCierre));
+  favoritos.sort((a, b) => diasRestantes(a.fechaCierre) - diasRestantes(b.fechaCierre));
 
   favoritos.forEach(beca => {
     const dias = diasRestantes(beca.fechaCierre);
