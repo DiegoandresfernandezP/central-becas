@@ -130,7 +130,7 @@ function mostrarFavoritos() {
 
     lista.appendChild(card);
   });
-}
+
 
 
 // Eliminar favoritos
