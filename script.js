@@ -1,10 +1,18 @@
 let becas = []; // Aquí se guardarán las becas cargadas
+let paginaActual = 1;
+let becasPorPagina = 12; // puedes cambiar a 20, 50, etc.
 
 // Función para mostrar becas en la página
 function mostrarBecas(lista) {
   const contenedor = document.getElementById("becasList");
   contenedor.innerHTML = "";
-  lista.forEach(beca => {
+
+  // Calcular inicio y fin según la página actual
+  const inicio = (paginaActual - 1) * becasPorPagina;
+  const fin = inicio + becasPorPagina;
+  const becasPagina = lista.slice(inicio, fin);
+
+  becasPagina.forEach(beca => {
     const card = document.createElement("div");
     card.className = "beca-card";
     card.innerHTML = `
@@ -22,9 +30,10 @@ function mostrarBecas(lista) {
     `;
     contenedor.appendChild(card);
   });
-  activarFavoritos();
-}
 
+  activarFavoritos();
+  mostrarControles(lista.length);
+}
 // Función para filtrar becas
 function filtrarBecas() {
   const tipo = document.getElementById("tipoFilter").value;
@@ -186,4 +195,46 @@ function mostrarFavoritosFiltrados(lista) {
 
     contenedor.appendChild(card);
   });
+}
+function mostrarControles(totalBecas) {
+  const controles = document.getElementById("paginacion");
+  controles.innerHTML = "";
+
+  const totalPaginas = Math.ceil(totalBecas / becasPorPagina);
+
+  if (paginaActual > 1) {
+    const prevBtn = document.createElement("button");
+    prevBtn.textContent = "⬅️ Anterior";
+    prevBtn.onclick = () => {
+      paginaActual--;
+      filtrarBecas();
+    };
+    controles.appendChild(prevBtn);
+  }
+
+  if (paginaActual < totalPaginas) {
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Siguiente ➡️";
+    nextBtn.onclick = () => {
+      paginaActual++;
+      filtrarBecas();
+    };
+    controles.appendChild(nextBtn);
+  }
+
+  // Selector de cantidad por página
+  const selector = document.createElement("select");
+  [12, 24, 50, 100].forEach(num => {
+    const option = document.createElement("option");
+    option.value = num;
+    option.textContent = `${num} por página`;
+    if (num === becasPorPagina) option.selected = true;
+    selector.appendChild(option);
+  });
+  selector.onchange = () => {
+    becasPorPagina = parseInt(selector.value);
+    paginaActual = 1;
+    filtrarBecas();
+  };
+  controles.appendChild(selector);
 }
