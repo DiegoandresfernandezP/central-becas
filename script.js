@@ -89,22 +89,29 @@ function mostrarFavoritos() {
   const lista = document.getElementById("favoritosList");
   lista.innerHTML = "";
 
-  favoritos.forEach(titulo => {
+  favoritos.forEach(beca => {
     const card = document.createElement("div");
     card.className = "beca-card favorito-card";
     card.innerHTML = `
-      <h3>${titulo}</h3>
+      <h3>${beca.titulo}</h3>
+      <div class="tags">
+        <span class="tag ${beca.nivel}">${beca.nivel}</span>
+        <span class="tag ${beca.tipo}">${beca.tipo}</span>
+      </div>
+      <p>${beca.descripcion}</p>
+      <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
+      <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
       <button class="remove-btn">❌ Eliminar</button>
     `;
 
-    // Botón eliminar
     card.querySelector(".remove-btn").addEventListener("click", () => {
-      eliminarFavorito(titulo);
+      eliminarFavorito(beca.titulo);
     });
 
     lista.appendChild(card);
   });
 }
+
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   favoritos = favoritos.filter(item => item !== titulo);
