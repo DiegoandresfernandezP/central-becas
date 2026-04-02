@@ -98,7 +98,7 @@ function mostrarFavoritos() {
   const lista = document.getElementById("favoritosList");
   lista.innerHTML = "";
 
-  // Ordenar por fecha de cierre (más próxima primero)
+  // 🔧 Ordenar por fecha de cierre (más próxima primero)
   favoritos.sort((a, b) => new Date(a.fechaCierre) - new Date(b.fechaCierre));
 
   favoritos.forEach(beca => {
