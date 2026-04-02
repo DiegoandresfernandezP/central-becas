@@ -135,8 +135,6 @@ function mostrarFavoritos() {
   });
 }
 
-
-
 // Eliminar favoritos
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
