@@ -94,15 +94,18 @@ function diasRestantes(fechaCierre) {
 
 // Mostrar favoritos
 function mostrarFavoritos() {
-  const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const lista = document.getElementById("favoritosList");
   lista.innerHTML = "";
+
+  // Ordenar por fecha de cierre (más próxima primero)
+  favoritos.sort((a, b) => new Date(a.fechaCierre) - new Date(b.fechaCierre));
 
   favoritos.forEach(beca => {
     const dias = diasRestantes(beca.fechaCierre);
 
     // Determinar color según urgencia
-    let colorClase = "verde"; // por defecto
+    let colorClase = "verde";
     if (dias <= 7) {
       colorClase = "rojo";
     } else if (dias <= 30) {
@@ -130,6 +133,7 @@ function mostrarFavoritos() {
 
     lista.appendChild(card);
   });
+}
 
 
 
