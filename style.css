@@ -123,3 +123,26 @@ footer img {
   margin: 0 10px;
   vertical-align: middle;
 }
+
+.favorito-card {
+  border: 2px solid gold;
+  background-color: #fffbea;
+}
+
+.favorito-card h3 {
+  color: #b8860b;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.remove-btn:hover {
+  background-color: #cc0000;
+}

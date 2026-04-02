@@ -88,20 +88,21 @@ function mostrarFavoritos() {
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const lista = document.getElementById("favoritosList");
   lista.innerHTML = "";
+
   favoritos.forEach(titulo => {
-    const li = document.createElement("li");
-    li.textContent = titulo;
+    const card = document.createElement("div");
+    card.className = "beca-card favorito-card";
+    card.innerHTML = `
+      <h3>${titulo}</h3>
+      <button class="remove-btn">❌ Eliminar</button>
+    `;
 
     // Botón eliminar
-    const btnEliminar = document.createElement("button");
-    btnEliminar.textContent = "❌";
-    btnEliminar.style.marginLeft = "10px";
-    btnEliminar.addEventListener("click", () => {
+    card.querySelector(".remove-btn").addEventListener("click", () => {
       eliminarFavorito(titulo);
     });
 
-    li.appendChild(btnEliminar);
-    lista.appendChild(li);
+    lista.appendChild(card);
   });
 }
 function eliminarFavorito(titulo) {
