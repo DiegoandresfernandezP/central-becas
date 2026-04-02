@@ -91,6 +91,22 @@ function mostrarFavoritos() {
   favoritos.forEach(titulo => {
     const li = document.createElement("li");
     li.textContent = titulo;
+
+    // Botón eliminar
+    const btnEliminar = document.createElement("button");
+    btnEliminar.textContent = "❌";
+    btnEliminar.style.marginLeft = "10px";
+    btnEliminar.addEventListener("click", () => {
+      eliminarFavorito(titulo);
+    });
+
+    li.appendChild(btnEliminar);
     lista.appendChild(li);
   });
+}
+function eliminarFavorito(titulo) {
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  favoritos = favoritos.filter(item => item !== titulo);
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  mostrarFavoritos(); // refresca la lista
 }
