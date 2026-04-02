@@ -5,18 +5,20 @@
   <title>Central de Becas - Oportunidades Internacionales</title>
   <link href="style.css" rel="stylesheet">
 </head>
-<h2>⭐ Mis Favoritos</h2>
-<ul id="favoritosList"></ul>
-<button onclick="mostrarFavoritos()">Ver Favoritos</button>
 <body>
+  <!-- Sección de favoritos -->
+  <h2>⭐ Mis Favoritos</h2>
+  <ul id="favoritosList"></ul>
+  <button onclick="mostrarFavoritos()">Ver Favoritos</button>
+
   <!-- Header con título y buscador -->
   <header>
     <h1>Oportunidades Internacionales</h1>
     <div class="search-bar">
-      <input type="text" id="searchInput" placeholder="Buscar... 🔍">
+      <input type="text" id="searchInput" placeholder="Buscar becas... 🔍">
     </div>
   </header>
-<input type="text" id="searchInput" placeholder="Buscar becas..." />
+
   <!-- Barra de filtros -->
   <div class="filters">
     <select id="tipoFilter">
@@ -31,6 +33,7 @@
       <option value="fellowship">Fellowship</option>
       <option value="competencia">Competencia</option>
     </select>
+
     <select id="areaFilter">
       <option value="">Área</option>
       <option value="STEM">STEM</option>
@@ -40,15 +43,17 @@
       <option value="humanidades">Humanidades</option>
       <option value="economia">Economía</option>
     </select>
+
     <select id="nivelFilter">
       <option value="">Nivel</option>
       <option value="nacional">Nacional</option>
       <option value="internacional">Internacional</option>
     </select>
+
     <select id="ordenFilter">
- 	 <option value="">Ordenar por...</option>
-  	<option value="asc">Fecha más próxima</option>
-  	<option value="desc">Fecha más lejana</option>
+      <option value="">Ordenar por...</option>
+      <option value="asc">Fecha más próxima</option>
+      <option value="desc">Fecha más lejana</option>
     </select>
 
     <input type="date" id="fechaFilter">

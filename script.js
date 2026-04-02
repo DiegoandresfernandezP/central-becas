@@ -8,20 +8,22 @@ function mostrarBecas(lista) {
     const card = document.createElement("div");
     card.className = "beca-card";
     card.innerHTML = `
-  <h3>${beca.titulo}</h3>
-  <div class="tags">
-    <span class="tag ${beca.nivel}">${beca.nivel}</span>
-    <span class="tag ${beca.tipo}">${beca.tipo}</span>
-  </div>
-  <p>${beca.descripcion}</p>
-  <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
-  <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
-  <button class="fav-btn" data-titulo="${beca.titulo}">⭐ Favorito</button>
-`;
+      <h3>${beca.titulo}</h3>
+      <div class="tags">
+        <span class="tag ${beca.nivel}">${beca.nivel}</span>
+        <span class="tag ${beca.tipo}">${beca.tipo}</span>
+      </div>
+      <p>${beca.descripcion}</p>
+      <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
+      <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
+      <button class="fav-btn" data-titulo="${beca.titulo}">⭐ Favorito</button>
+    `;
     contenedor.appendChild(card);
   });
+  activarFavoritos();
 }
 
+// Función para filtrar becas
 function filtrarBecas() {
   const tipo = document.getElementById("tipoFilter").value;
   const area = document.getElementById("areaFilter").value;
@@ -49,6 +51,7 @@ function filtrarBecas() {
 
   mostrarBecas(filtradas);
 }
+
 // Cargar becas desde JSON
 fetch("becas.json")
   .then(res => res.json())
@@ -60,7 +63,6 @@ fetch("becas.json")
 // Activar buscador en tiempo real
 document.getElementById("searchInput").addEventListener("input", filtrarBecas);
 document.getElementById("ordenFilter").addEventListener("change", filtrarBecas);
-
 
 // Guardar favoritos
 function activarFavoritos() {
@@ -80,6 +82,8 @@ function activarFavoritos() {
     });
   });
 }
+
+// Mostrar favoritos
 function mostrarFavoritos() {
   const favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   const lista = document.getElementById("favoritosList");
@@ -89,27 +93,4 @@ function mostrarFavoritos() {
     li.textContent = titulo;
     lista.appendChild(li);
   });
-}
-// Modifica mostrarBecas para activar favoritos después de renderizar
-
-function mostrarBecas(lista) {
-  const contenedor = document.getElementById("becasList");
-  contenedor.innerHTML = "";
-  lista.forEach(beca => {
-    const card = document.createElement("div");
-    card.className = "beca-card";
-    card.innerHTML = `
-      <h3>${beca.titulo}</h3>
-      <div class="tags">
-        <span class="tag ${beca.nivel}">${beca.nivel}</span>
-        <span class="tag ${beca.tipo}">${beca.tipo}</span>
-      </div>
-      <p>${beca.descripcion}</p>
-      <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
-      <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
-      <button class="fav-btn" data-titulo="${beca.titulo}">⭐ Favorito</button>
-    `;
-    contenedor.appendChild(card);
-  });
-  activarFavoritos();
 }
