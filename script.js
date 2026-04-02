@@ -6,19 +6,20 @@ function mostrarBecas(lista) {
   contenedor.innerHTML = "";
   lista.forEach(beca => {
     const card = document.createElement("div");
+    card.className = "beca-card";
     card.innerHTML = `
-  <h3>${beca.titulo}</h3>
-  <div class="tags">
-    <span class="tag">${beca.tipo}</span>
-    <span class="tag">${beca.area}</span>
-    <span class="tag">${beca.fase}</span>
-    <span class="tag">${beca.pais}</span>
-  </div>
-  <p>${beca.descripcion}</p>
-  <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
-  <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
-  <button class="fav-btn" data-titulo="${beca.titulo}">⭐ Favorito</button>
-`;
+      <h3>${beca.titulo}</h3>
+      <div class="tags">
+        <span class="tag">${beca.tipo}</span>
+        <span class="tag">${beca.area}</span>
+        <span class="tag">${beca.fase}</span>
+        <span class="tag">${beca.pais}</span>
+      </div>
+      <p>${beca.descripcion}</p>
+      <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
+      <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
+      <button class="fav-btn" data-titulo="${beca.titulo}">⭐ Favorito</button>
+    `;
     contenedor.appendChild(card);
   });
   activarFavoritos();
@@ -28,24 +29,25 @@ function mostrarBecas(lista) {
 function filtrarBecas() {
   const tipo = document.getElementById("tipoFilter").value;
   const area = document.getElementById("areaFilter").value;
-  const nivel = document.getElementById("nivelFilter").value;
-  const fecha = document.getElementById("fechaFilter").value;
+  const fase = document.getElementById("faseFilter").value;
+  const pais = document.getElementById("paisFilter").value;
   const search = document.getElementById("searchInput").value.toLowerCase();
   const orden = document.getElementById("ordenFilter").value;
 
   let filtradas = becas.filter(beca => {
     return (!tipo || beca.tipo === tipo) &&
            (!area || beca.area === area) &&
-           (!nivel || beca.nivel === nivel) &&
-           (!fecha || beca.fechaCierre >= fecha) &&
+           (!fase || beca.fase === fase) &&
+           (!pais || beca.pais === pais) &&
            (!search || beca.titulo.toLowerCase().includes(search) || beca.descripcion.toLowerCase().includes(search));
   });
 
-  // Ordenar por fecha de cierre
+  // Ordenar por fecha de cierre (solo si es fecha válida)
   if (orden) {
     filtradas.sort((a, b) => {
       const fechaA = new Date(a.fechaCierre);
       const fechaB = new Date(b.fechaCierre);
+      if (isNaN(fechaA) || isNaN(fechaB)) return 0; // ignora si no es fecha
       return orden === "asc" ? fechaA - fechaB : fechaB - fechaA;
     });
   }
@@ -85,9 +87,11 @@ function activarFavoritos() {
     });
   });
 }
+
 function diasRestantes(fechaCierre) {
   const hoy = new Date();
   const cierre = new Date(fechaCierre);
+  if (isNaN(cierre)) return 0; // si no es fecha válida
   const diferencia = cierre - hoy;
   const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
   return dias > 0 ? dias : 0; // si ya pasó, mostrar 0
@@ -99,7 +103,7 @@ function mostrarFavoritos() {
   const lista = document.getElementById("favoritosList");
   lista.innerHTML = "";
 
-  // 🔧 Ordenar por fecha de cierre (más próxima primero)
+  // Ordenar por fecha de cierre (más próxima primero)
   favoritos.sort((a, b) => diasRestantes(a.fechaCierre) - diasRestantes(b.fechaCierre));
 
   favoritos.forEach(beca => {
@@ -118,8 +122,10 @@ function mostrarFavoritos() {
     card.innerHTML = `
       <h3>${beca.titulo}</h3>
       <div class="tags">
-        <span class="tag ${beca.nivel}">${beca.nivel}</span>
-        <span class="tag ${beca.tipo}">${beca.tipo}</span>
+        <span class="tag">${beca.tipo}</span>
+        <span class="tag">${beca.area}</span>
+        <span class="tag">${beca.fase}</span>
+        <span class="tag">${beca.pais}</span>
       </div>
       <p>${beca.descripcion}</p>
       <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
@@ -139,43 +145,12 @@ function mostrarFavoritos() {
 // Eliminar favoritos
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  
-  // Filtrar por título
   const nuevosFavoritos = favoritos.filter(beca => beca.titulo !== titulo);
-  
   localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   mostrarFavoritos(); // refresca la lista
 }
-// 🔧 Filtrar favoritos
-function filtrarBecas() {
-  const tipo = document.getElementById("tipoFilter").value;
-  const area = document.getElementById("areaFilter").value;
-  const fase = document.getElementById("faseFilter").value;
-  const pais = document.getElementById("paisFilter").value;
-  const search = document.getElementById("searchInput").value.toLowerCase();
-  const orden = document.getElementById("ordenFilter").value;
 
-  let filtradas = becas.filter(beca => {
-    return (!tipo || beca.tipo === tipo) &&
-           (!area || beca.area === area) &&
-           (!fase || beca.fase === fase) &&
-           (!pais || beca.pais === pais) &&
-           (!search || beca.titulo.toLowerCase().includes(search) || beca.descripcion.toLowerCase().includes(search));
-  });
-
-  // Ordenar por fecha de cierre (solo si es fecha válida)
-  if (orden) {
-    filtradas.sort((a, b) => {
-      const fechaA = new Date(a.fechaCierre);
-      const fechaB = new Date(b.fechaCierre);
-      if (isNaN(fechaA) || isNaN(fechaB)) return 0; // ignora si no es fecha
-      return orden === "asc" ? fechaA - fechaB : fechaB - fechaA;
-    });
-  }
-
-  mostrarBecas(filtradas);
-}
-// 🔧 Mostrar favoritos filtrados
+// Mostrar favoritos filtrados
 function mostrarFavoritosFiltrados(lista) {
   const contenedor = document.getElementById("favoritosList");
   contenedor.innerHTML = "";
@@ -193,8 +168,10 @@ function mostrarFavoritosFiltrados(lista) {
     card.innerHTML = `
       <h3>${beca.titulo}</h3>
       <div class="tags">
-        <span class="tag ${beca.nivel}">${beca.nivel}</span>
-        <span class="tag ${beca.tipo}">${beca.tipo}</span>
+        <span class="tag">${beca.tipo}</span>
+        <span class="tag">${beca.area}</span>
+        <span class="tag">${beca.fase}</span>
+        <span class="tag">${beca.pais}</span>
       </div>
       <p>${beca.descripcion}</p>
       <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
