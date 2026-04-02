@@ -118,7 +118,10 @@ function mostrarFavoritos() {
 // Eliminar favoritos
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  favoritos = favoritos.filter(item => item.titulo !== titulo);
+  
+  // Filtrar por título exacto
+  favoritos = favoritos.filter(beca => beca.titulo !== titulo);
+  
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
   mostrarFavoritos(); // refresca la lista
 }
