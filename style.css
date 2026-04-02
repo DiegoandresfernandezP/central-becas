@@ -155,3 +155,15 @@ footer img {
   font-weight: bold;
   color: #d9534f; /* rojo para urgencia */
 }
+.dias-restantes.verde {
+  color: green;
+}
+
+.dias-restantes.naranja {
+  color: orange;
+}
+
+.dias-restantes.rojo {
+  color: red;
+  font-weight: bold;
+}

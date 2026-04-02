@@ -101,6 +101,14 @@ function mostrarFavoritos() {
   favoritos.forEach(beca => {
     const dias = diasRestantes(beca.fechaCierre);
 
+    // Determinar color según urgencia
+    let colorClase = "verde"; // por defecto
+    if (dias <= 7) {
+      colorClase = "rojo";
+    } else if (dias <= 30) {
+      colorClase = "naranja";
+    }
+
     const card = document.createElement("div");
     card.className = "beca-card favorito-card";
     card.innerHTML = `
@@ -111,7 +119,7 @@ function mostrarFavoritos() {
       </div>
       <p>${beca.descripcion}</p>
       <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
-      <p><strong>Días restantes:</strong> ${dias}</p>
+      <p class="dias-restantes ${colorClase}"><strong>Días restantes:</strong> ${dias}</p>
       <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
       <button class="remove-btn">❌ Eliminar</button>
     `;
