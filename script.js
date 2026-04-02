@@ -84,7 +84,13 @@ function activarFavoritos() {
     });
   });
 }
-
+function diasRestantes(fechaCierre) {
+  const hoy = new Date();
+  const cierre = new Date(fechaCierre);
+  const diferencia = cierre - hoy;
+  const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+  return dias > 0 ? dias : 0; // si ya pasó, mostrar 0
+}
 
 // Mostrar favoritos
 function mostrarFavoritos() {
@@ -93,6 +99,8 @@ function mostrarFavoritos() {
   lista.innerHTML = "";
 
   favoritos.forEach(beca => {
+    const dias = diasRestantes(beca.fechaCierre);
+
     const card = document.createElement("div");
     card.className = "beca-card favorito-card";
     card.innerHTML = `
@@ -103,6 +111,7 @@ function mostrarFavoritos() {
       </div>
       <p>${beca.descripcion}</p>
       <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
+      <p><strong>Días restantes:</strong> ${dias}</p>
       <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
       <button class="remove-btn">❌ Eliminar</button>
     `;
@@ -114,6 +123,7 @@ function mostrarFavoritos() {
     lista.appendChild(card);
   });
 }
+
 
 // Eliminar favoritos
 function eliminarFavorito(titulo) {
