@@ -70,10 +70,12 @@ function activarFavoritos() {
   botones.forEach(btn => {
     btn.addEventListener("click", () => {
       const titulo = btn.getAttribute("data-titulo");
+      const beca = becas.find(b => b.titulo === titulo); // buscar objeto completo
       let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
       
-      if (!favoritos.includes(titulo)) {
-        favoritos.push(titulo);
+      // Verificar si ya existe
+      if (!favoritos.some(f => f.titulo === titulo)) {
+        favoritos.push(beca);
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
         alert(`Se agregó "${titulo}" a favoritos`);
       } else {
@@ -82,6 +84,7 @@ function activarFavoritos() {
     });
   });
 }
+
 
 // Mostrar favoritos
 function mostrarFavoritos() {
@@ -112,9 +115,10 @@ function mostrarFavoritos() {
   });
 }
 
+// Eliminar favoritos
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-  favoritos = favoritos.filter(item => item !== titulo);
+  favoritos = favoritos.filter(item => item.titulo !== titulo);
   localStorage.setItem("favoritos", JSON.stringify(favoritos));
   mostrarFavoritos(); // refresca la lista
 }
