@@ -1,29 +1,119 @@
-import pandas as pd
-import json
-
-# Leer tu Excel
-df = pd.read_excel("becas.xlsx")
-
-# Renombrar columnas para que coincidan con tu web
-df = df.rename(columns={
-    "Tipo": "tipo",
-    "Area": "area",
-    "Fase": "fase",
-    "Nombre": "titulo",
-    "Fecha de apertura de solicitudes": "fechaApertura",
-    "Fecha de cierre de solicitudes": "fechaCierre",
-    "País": "pais",
-    "Enlace a la solicitud": "enlace",
-    "Dirigido a": "dirigidoA",
-    "Nota": "nota",
-    "descripcion": "descripcion"
-})
-
-# Convertir a lista de diccionarios
-becas = df.to_dict(orient="records")
-
-# Guardar como JSON
-with open("becas.json", "w", encoding="utf-8") as f:
-    json.dump(becas, f, ensure_ascii=False, indent=2)
-
-print("✅ becas.json generado correctamente")
+[
+  {
+    "tipo": "Internship",
+    "area": "Todas",
+    "fase": "Pendiente de solicitar",
+    "titulo": "ARGENTINA INTERNSHIP PROGRAM 2026",
+    "fechaApertura": "",
+    "fechaCierre": "No indica",
+    "pais": "Argentina",
+    "enlace": "https://argentinainternshipprogram.com/#the-program",
+    "dirigidoA": "Estudiantes de pregrado y posgrado",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Internship",
+    "area": "Computer Science",
+    "fase": "Pendiente de solicitar",
+    "titulo": "Yale Engineering Research Internship Program Computer Science",
+    "fechaApertura": "",
+    "fechaCierre": "Sin deadline indicado",
+    "pais": "Estados Unidos",
+    "enlace": "https://engineering.yale.edu/academic-study/departments/computer-science/undergraduate-study/research-internship-program",
+    "dirigidoA": "Estudiantes de pregrado o posgrado",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Posgrado",
+    "area": "STEM",
+    "fase": "Pendiente de solicitar",
+    "titulo": "Biophysics of Brain Function Lab - PhD and Msc Openings",
+    "fechaApertura": "",
+    "fechaCierre": "Sin deadline indicado",
+    "pais": "Israel",
+    "enlace": "https://www.weizmann.ac.il/chembiophys/shemesh/join-us",
+    "dirigidoA": "Egresados de pregrado",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Internship",
+    "area": "Todas",
+    "fase": "Pendiente de solicitar",
+    "titulo": "National Student Research Institution (NSRI) Research Program",
+    "fechaApertura": "",
+    "fechaCierre": "Sin deadline",
+    "pais": "Remoto",
+    "enlace": "https://discord.com/invite/DZ9FwNYSeJ",
+    "dirigidoA": "Estudiantes de pregrado y posgrado",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Maestría",
+    "area": "Todas",
+    "fase": "Pendiente de solicitar",
+    "titulo": "Erasmus Mundus Joint Masters",
+    "fechaApertura": "",
+    "fechaCierre": "Depende del programa",
+    "pais": "Europa",
+    "enlace": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en?prefLang=es",
+    "dirigidoA": "Estudiantes de pregrado (último año) o egresados",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Competencia",
+    "area": "Todas",
+    "fase": "Pendiente de solicitar",
+    "titulo": "L'Oréal Brandstorm",
+    "fechaApertura": "",
+    "fechaCierre": "Depende del país",
+    "pais": "Francia",
+    "enlace": "https://brandstorm.loreal.com/en",
+    "dirigidoA": "Estudiantes",
+    "nota": "En equipos, menores de 30 años",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Posdoc",
+    "area": "STEM",
+    "fase": "Pendiente de solicitar",
+    "titulo": "Humboldt Research Fellowship",
+    "fechaApertura": "",
+    "fechaCierre": "Marzo, Julio, Noviembre",
+    "pais": "Alemania",
+    "enlace": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship#h1268",
+    "dirigidoA": "Graduados de PhD o investigadores experimentados",
+    "nota": "",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Internship",
+    "area": "IT",
+    "fase": "Pendiente de solicitar",
+    "titulo": "HENNGE's Global Internship Program (GIP)",
+    "fechaApertura": "",
+    "fechaCierre": "Sin deadline",
+    "pais": "Japón",
+    "enlace": "https://recruit.hennge.com/en/gip/",
+    "dirigidoA": "Estudiantes de pregrado o posgrado, egresados",
+    "nota": "A partir de 3er año de pregrado, los cupos se asignan según el orden de postulación",
+    "descripcion": ""
+  },
+  {
+    "tipo": "Internship",
+    "area": "STEM",
+    "fase": "Pendiente de solicitar",
+    "titulo": "Visiting Student Research Program (VSRP) at KAUST",
+    "fechaApertura": "",
+    "fechaCierre": "Sin deadline",
+    "pais": "Arabia Saudita",
+    "enlace": "https://admissions.kaust.edu.sa/study/internships",
+    "dirigidoA": "Estudiantes extranjeros de grado (3.º o 4.º año) y de posgrado (máster)",
+    "nota": "",
+    "descripcion": ""
+  }
+]

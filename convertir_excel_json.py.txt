@@ -1,0 +1,29 @@
+import pandas as pd
+import json
+
+# Leer tu Excel
+df = pd.read_excel("becas.xlsx")
+
+# Renombrar columnas para que coincidan con tu web
+df = df.rename(columns={
+    "Tipo": "tipo",
+    "Área": "area",
+    "Fase": "fase",
+    "Nombre": "titulo",
+    "Fecha de apertura de solicitudes": "fechaApertura",
+    "Fecha de cierre de solicitudes": "fechaCierre",
+    "País": "pais",
+    "Enlace a la solicitud": "enlace",
+    "Dirigido a": "dirigidoA",
+    "Nota": "nota",
+    "Descripcion": "descripcion"
+})
+
+# Convertir a lista de diccionarios
+becas = df.to_dict(orient="records")
+
+# Guardar como JSON
+with open("becas.json", "w", encoding="utf-8") as f:
+    json.dump(becas, f, ensure_ascii=False, indent=2)
+
+print("✅ becas.json generado correctamente")
