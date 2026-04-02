@@ -145,3 +145,54 @@ function eliminarFavorito(titulo) {
   localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   mostrarFavoritos(); // refresca la lista
 }
+// 🔧 NUEVO: Filtrar favoritos
+function filtrarFavoritos() {
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+  const urgencia = document.getElementById("favoritosUrgencia").value;
+  const tipo = document.getElementById("favoritosTipo").value;
+
+  if (urgencia) {
+    favoritos = favoritos.filter(beca => diasRestantes(beca.fechaCierre) <= parseInt(urgencia));
+  }
+  if (tipo) {
+    favoritos = favoritos.filter(beca => beca.tipo === tipo);
+  }
+
+  mostrarFavoritosFiltrados(favoritos);
+}
+
+// 🔧 NUEVO: Mostrar favoritos filtrados
+function mostrarFavoritosFiltrados(lista) {
+  const contenedor = document.getElementById("favoritosList");
+  contenedor.innerHTML = "";
+
+  lista.sort((a, b) => diasRestantes(a.fechaCierre) - diasRestantes(b.fechaCierre));
+
+  lista.forEach(beca => {
+    const dias = diasRestantes(beca.fechaCierre);
+    let colorClase = "verde";
+    if (dias <= 7) colorClase = "rojo";
+    else if (dias <= 30) colorClase = "naranja";
+
+    const card = document.createElement("div");
+    card.className = "beca-card favorito-card";
+    card.innerHTML = `
+      <h3>${beca.titulo}</h3>
+      <div class="tags">
+        <span class="tag ${beca.nivel}">${beca.nivel}</span>
+        <span class="tag ${beca.tipo}">${beca.tipo}</span>
+      </div>
+      <p>${beca.descripcion}</p>
+      <p><strong>Cierre:</strong> ${beca.fechaCierre}</p>
+      <p class="dias-restantes ${colorClase}"><strong>Días restantes:</strong> ${dias}</p>
+      <a href="${beca.enlace}" target="_blank"><button>Aplicar Aquí</button></a>
+      <button class="remove-btn">❌ Eliminar</button>
+    `;
+
+    card.querySelector(".remove-btn").addEventListener("click", () => {
+      eliminarFavorito(beca.titulo);
+    });
+
+    contenedor.appendChild(card);
+  });
+}

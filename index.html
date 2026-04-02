@@ -17,6 +17,21 @@
   </header>
  <!-- Sección de favoritos -->
   <h2>⭐ Mis Favoritos</h2>
+<div class="favoritos-filtros">
+  <select id="favoritosUrgencia">
+    <option value="">-- Filtrar por urgencia --</option>
+    <option value="7">Menos de 7 días</option>
+    <option value="30">Menos de 30 días</option>
+  </select>
+
+  <select id="favoritosTipo">
+    <option value="">-- Filtrar por tipo --</option>
+    <option value="internacional">Internacional</option>
+    <option value="nacional">Nacional</option>
+  </select>
+
+  <button onclick="filtrarFavoritos()">Filtrar Favoritos</button>
+</div>
 <div class="becas-grid" id="favoritosList"></div>
 <button onclick="mostrarFavoritos()">Ver Favoritos</button>
   <!-- Barra de filtros -->
