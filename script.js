@@ -70,10 +70,10 @@ function activarFavoritos() {
   botones.forEach(btn => {
     btn.addEventListener("click", () => {
       const titulo = btn.getAttribute("data-titulo");
-      const beca = becas.find(b => b.titulo === titulo); // buscar objeto completo
+      const beca = becas.find(b => b.titulo === titulo); // objeto completo
       let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
       
-      // Verificar si ya existe
+      // Verificar si ya existe por título
       if (!favoritos.some(f => f.titulo === titulo)) {
         favoritos.push(beca);
         localStorage.setItem("favoritos", JSON.stringify(favoritos));
@@ -119,9 +119,9 @@ function mostrarFavoritos() {
 function eliminarFavorito(titulo) {
   let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
   
-  // Filtrar por título exacto
-  favoritos = favoritos.filter(beca => beca.titulo !== titulo);
+  // Filtrar por título
+  const nuevosFavoritos = favoritos.filter(beca => beca.titulo !== titulo);
   
-  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
   mostrarFavoritos(); // refresca la lista
 }
